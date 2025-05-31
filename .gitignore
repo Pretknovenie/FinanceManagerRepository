@@ -1,0 +1,28 @@
+# CMake build files
+build/
+[Bb]uild/
+*.build/
+CMakeCache.txt
+CMakeLists.txt.user
+CMakeFiles/
+cmake_install.cmake
+install_manifest.txt
+
+# Visual Studio files
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.suo
+*.user
+
+# Executables and libraries
+*.exe
+*.dll
+*.so
+*.a
+*.lib
+
+# Other
+*.log
+*.tmp
+*~
