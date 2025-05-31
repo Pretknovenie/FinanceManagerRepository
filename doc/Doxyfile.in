@@ -1,0 +1,11 @@
+PROJECT_NAME           = "Personal Finance Manager"
+PROJECT_NUMBER         = 1.0
+PROJECT_BRIEF          = "A C++ Console Application for Personal Finance Management"
+OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc
+INPUT                  = @CMAKE_SOURCE_DIR@/src
+RECURSIVE              = YES
+EXTRACT_ALL            = YES
+EXTRACT_PRIVATE        = NO
+GENERATE_LATEX         = NO
+GENERATE_HTML          = YES
+HTML_OUTPUT            = html
