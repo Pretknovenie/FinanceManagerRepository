@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 PROJECT_NAME           = "Персональный финансовый менеджер"
 PROJECT_NUMBER         = 1.0
 PROJECT_BRIEF          = "Консольное приложение для управления личными финансами"
-=======
-PROJECT_NAME           = "Personal Finance Manager"
-PROJECT_NUMBER         = 1.0
-PROJECT_BRIEF          = "A C++ Console Application for Personal Finance Management"
->>>>>>> 16dafc0750b118d3015b478c231ec0fbc8d70b64
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc
 INPUT                  = @CMAKE_SOURCE_DIR@/src
 RECURSIVE              = YES
