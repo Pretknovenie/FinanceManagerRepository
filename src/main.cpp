@@ -4,7 +4,7 @@
 #include <map>
 #include <numeric>
 
-// --- Helper Functions ---
+// --- Вспомогательные функции ---
 void printTransaction(const Transaction& trans) {
     std::cout << "ID: " << trans.id << ", Date: " << trans.date << ", Amount: " << trans.amount
               << ", Category: " << trans.category << ", Desc: " << trans.description << std::endl;
@@ -45,7 +45,7 @@ std::string getStringInput(const std::string& prompt) {
     return value;
 }
 
-// --- UI Functions ---
+// --- Функции пользовательского интерфейса ---
 void addTransactionUI(FinanceManager& manager) {
     std::cout << "\n--- Add New Transaction ---\n";
     Date date = getDateInput("Enter date (YYYY-MM-DD): ");
@@ -152,7 +152,6 @@ int main(int argc, char* argv[]) {
         manager.loadFromFile(filename);
     } catch (const std::exception& e) {
         std::cerr << "Error loading data: " << e.what() << std::endl;
-        // Continue with an empty manager
     }
 
     int choice;

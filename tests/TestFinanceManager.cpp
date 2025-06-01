@@ -2,9 +2,9 @@
 #include "doctest.h"
 #include "FinanceManager.h"
 #include <fstream>
-#include <cstdio> // For std::remove
+#include <cstdio> // Для std::remove
 
-// Helper to create a manager and add some data
+// Помощник для создания менеджера и добавления некоторых данных
 FinanceManager create_test_manager() {
     FinanceManager manager;
     manager.addTransaction(Date(2023, 10, 25), -50.0, "Food", "Lunch");
@@ -65,7 +65,7 @@ TEST_CASE("FinanceManager Core Functionality") {
         CHECK(manager.deleteTransaction(1) == true);
         CHECK(manager.getTransactions().size() == 2);
         CHECK(manager.findTransactionById(1) == nullptr);
-        // Negative case: delete non-existent
+        // Отрицательный случай: удалить несуществующее
         CHECK(manager.deleteTransaction(999) == false);
     }
 
@@ -77,7 +77,7 @@ TEST_CASE("FinanceManager Core Functionality") {
         CHECK(edited_trans->amount == -20.0);
         CHECK(edited_trans->date.day == 28);
         CHECK(edited_trans->description == "Metro");
-        // Negative case: edit non-existent
+        // Отрицательный случай: редактировать несуществующее
         CHECK(manager.editTransaction(999, Date(), 0, "", "") == false);
     }
     
@@ -85,7 +85,7 @@ TEST_CASE("FinanceManager Core Functionality") {
         const auto* found = manager.findTransactionById(2);
         REQUIRE(found != nullptr);
         CHECK(found->category == "Salary");
-        // Negative case: find non-existent
+        // Отрицательный случай: найти несуществующее
         const auto* not_found = manager.findTransactionById(999);
         CHECK(not_found == nullptr);
     }
@@ -94,7 +94,7 @@ TEST_CASE("FinanceManager Core Functionality") {
 TEST_CASE("File I/O") {
     const std::string test_filename = "test_data.csv";
     
-    // Cleanup before test
+    // Очистка перед тестом
     std::remove(test_filename.c_str());
 
     SUBCASE("Save and Load") {
@@ -116,14 +116,14 @@ TEST_CASE("File I/O") {
             CHECK(trans1[i].description == trans2[i].description);
         }
 
-        // Check if next ID is correctly updated
+        // Проверка, правильно ли обновлен следующий идентификатор
         manager2.addTransaction(Date(2024, 1, 1), 1.0, "Test", "");
         CHECK(manager2.findTransactionById(4) != nullptr);
     }
 
     SUBCASE("Load from non-existent file") {
         FinanceManager manager;
-        // Should not throw, just inform the user (or be silent)
+        // Не следует бросать, просто информировать пользователя (или молчать)
         CHECK_NOTHROW(manager.loadFromFile("non_existent_file.csv"));
         CHECK(manager.getTransactions().empty());
     }
@@ -131,13 +131,13 @@ TEST_CASE("File I/O") {
     SUBCASE("Load from malformed file") {
         std::ofstream malformed_file(test_filename);
         malformed_file << "ID,Date,Amount,Category,Description\n";
-        malformed_file << "1,2023-10-10,100,Food\n"; // Missing column
+        malformed_file << "1,2023-10-10,100,Food\n";
         malformed_file.close();
 
         FinanceManager manager;
         CHECK_THROWS_AS(manager.loadFromFile(test_filename), std::runtime_error);
     }
 
-    // Cleanup after test
+    // Очистка после теста
     std::remove(test_filename.c_str());
 }

@@ -55,7 +55,7 @@ const std::vector<Transaction>& FinanceManager::getTransactions() const {
 void FinanceManager::loadFromFile(const std::string& filename) {
     std::ifstream file(filename);
     if (!file.is_open()) {
-        // It's not an error if the file doesn't exist yet
+        // Не возникнет ошибки, если файла не существует
         std::cerr << "Info: Data file not found. A new one will be created on exit."
                   << std::endl;
         return;
@@ -63,7 +63,6 @@ void FinanceManager::loadFromFile(const std::string& filename) {
 
     transactions_.clear();
     std::string line;
-    // Skip header
     std::getline(file, line);
 
     while (std::getline(file, line)) {

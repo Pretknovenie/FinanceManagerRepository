@@ -1,3 +1,3 @@
 #include "Transaction.h"
-// No implementation needed for a plain struct.
-// This file exists for structural consistency with CMake.
+// Для простой структуры реализация не требуется.
+// Этот файл существует для структурной согласованности с CMake.

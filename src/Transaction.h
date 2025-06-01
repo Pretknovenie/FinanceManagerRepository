@@ -6,17 +6,17 @@
 
 /**
  * @struct Transaction
- * @brief Represents a single financial transaction.
+ * @brief Представляет единую финансовую транзакцию.
  *
- * This struct holds all information related to a transaction, including its
- * unique ID, date, amount, category, and an optional description.
+ * Эта структура содержит всю информацию, связанную с транзакцией, включая ее
+ * уникальный идентификатор, дату, сумму, категорию и необязательное описание.
  */
 struct Transaction {
-    size_t id;                ///< Unique identifier for the transaction.
-    Date date;                ///< The date of the transaction.
-    double amount;            ///< The amount (positive for income, negative for expense).
-    std::string category;     ///< The category of the transaction (e.g., "Food", "Salary").
-    std::string description;  ///< An optional description of the transaction.
+    size_t id;                ///< Уникальный идентификатор транзакции.
+    Date date;                ///< Дата транзакции.
+    double amount;            ///< Сумма (положительная для доходов, отрицательная для расходов).
+    std::string category;     ///< Категория транзакции (например, «Еда», «Зарплата»).
+    std::string description;  ///< Необязательное описание транзакции.
 };
 
 #endif // TRANSACTION_H

@@ -8,80 +8,80 @@
 
 /**
  * @class FinanceManager
- * @brief Manages all financial operations and data.
+ * @brief Управляет всеми финансовыми операциями и данными.
  *
- * This class is the core of the application, handling the storage,
- * manipulation, and analysis of transactions.
+ * Этот класс является ядром приложения, отвечающим за хранение,
+ * обработку и анализ транзакций.
  */
 class FinanceManager {
 public:
     /**
-     * @brief Adds a new transaction to the manager.
-     * @param date The date of the transaction.
-     * @param amount The transaction amount.
-     * @param category The transaction category.
-     * @param description An optional description.
-     * @return The newly created Transaction object.
+     * @brief Добавляет новую транзакцию в менеджер.
+     * @param date Дата транзакции.
+     * @param amount Сумма транзакции.
+     * @param category Категория транзакции.
+     * @param description Описание (необязательное).
+     * @return Вновь созданный объект транзакции.
      */
     Transaction addTransaction(const Date& date, double amount, const std::string& category,
                                const std::string& description);
 
     /**
-     * @brief Edits an existing transaction.
-     * @param id The ID of the transaction to edit.
-     * @param new_date The new date for the transaction.
-     * @param new_amount The new amount.
-     * @param new_category The new category.
-     * @param new_description The new description.
-     * @return True if the transaction was found and edited, false otherwise.
+     * @brief Редактирует существующую транзакцию.
+     * @param id Идентификатор транзакции для редактирования.
+     * @param new_date Новая дата транзакции.
+     * @param new_amount Новая сумма.
+     * @param new_category Новая категория.
+     * @param new_description новое описание.
+     * @return True, если транзакция была найдена и отредактирована, в противном случае — false.
      */
     bool editTransaction(size_t id, const Date& new_date, double new_amount,
                          const std::string& new_category, const std::string& new_description);
 
     /**
-     * @brief Deletes a transaction by its ID.
-     * @param id The ID of the transaction to delete.
-     * @return True if the transaction was found and deleted, false otherwise.
+     * @brief Удаляет транзакцию по ее идентификатору.
+     * @param id Идентификатор транзакции для удаления.
+     * @return True, если транзакция была найдена и удалена, в противном случае — false.
      */
     bool deleteTransaction(size_t id);
 
     /**
-     * @brief Finds a transaction by its ID.
-     * @param id The ID of the transaction to find.
-     * @return A pointer to the transaction if found, nullptr otherwise.
-     * @note The returned pointer is non-owning.
+     * @brief Находит транзакцию по ее идентификатору.
+     * @param id Идентификатор транзакции, которую необходимо найти.
+     * @return Указатель на транзакцию, если найден, в противном случае — nullptr.
+     * @note Возвращенный указатель не является владеющим.
      */
     const Transaction* findTransactionById(size_t id) const;
 
     /**
-     * @brief Retrieves all transactions.
-     * @return A constant reference to the vector of all transactions.
+     * @brief Извлекает все транзакции.
+     * @return Константная ссылка на вектор всех транзакций.
      */
     const std::vector<Transaction>& getTransactions() const;
 
     /**
-     * @brief Loads transactions from a CSV file.
-     * @param filename The path to the CSV file.
-     * @throws std::runtime_error on file I/O or parsing errors.
+     * @brief Загружает транзакции из CSV-файла.
+     * @param filename Путь к CSV-файлу.
+     * @throws std::runtime_error при ошибках ввода-вывода файла или синтаксического анализа.
      */
     void loadFromFile(const std::string& filename);
 
     /**
-     * @brief Saves all transactions to a CSV file.
-     * @param filename The path to the CSV file.
-     * @throws std::runtime_error on file I/O errors.
+     * @brief Сохраняет все транзакции в CSV-файл.
+     * @param filename Путь к CSV-файлу.
+     * @throws std::runtime_error при ошибках ввода-вывода файла.
      */
     void saveToFile(const std::string& filename) const;
 
 private:
-    std::vector<Transaction> transactions_; ///< Container for all transactions.
-    size_t next_id_ = 1;                    ///< Counter for generating unique transaction IDs.
+    std::vector<Transaction> transactions_; ///< Контейнер для всех транзакций.
+    size_t next_id_ = 1;                    ///< Счетчик для генерации уникальных идентификаторов транзакций.
 
     /**
-     * @brief Updates the next available ID based on current transactions.
+     * @brief Обновляет следующий доступный идентификатор на основе текущих транзакций.
      *
-     * Ensures that new transactions always get a unique ID, even after
-     * loading from a file.
+     * Гарантирует, что новые транзакции всегда получают уникальный идентификатор,
+     * даже после загрузки из файла.
      */
     void updateNextId();
 };

@@ -1,26 +1,44 @@
-# Personal Finance Manager
+# Персональный Финансовый Менеджер
 
-A console-based application for managing personal finances, written in C++.
+Консольное приложение для управления личными финансами, написанное на языке C++.
 
-## Features
+## Функции
 
-- Add, edit, delete, and view transactions.
-- Transactions include: date, amount, category, and an optional description.
-- Filter transactions by date or category.
-- Generate reports: total income/expense and expenses by category for a specific period.
-- Data persistence: all data is saved to and loaded from a CSV file.
-- Error handling for user input and file operations.
+- Добавление транзакции: дата, сумма (положительная для доходов, отрицательная для расходов), категория (например, "Еда", "Транспорт", "Развлечения", "Зарплата" и т.д.), описание (необязательное).
+- Редактирование транзакции: изменение даты, суммы, категории, описания.
+- Поиск транзакции по ID (уникальному номеру) или другим критериям.
+- Удаление транзакции по ID.
+- Просмотр транзакций (вывод всех транзакций).
+- Фильтрация по дате или категории.
+- Отчёты: общая сумма доходов/расходов за указанный период, сумма расходов по каждой категории за указанный период.
+- Сохранение/загрузка данных: данные хранятся в CSV файле, при запуске программы данные загружаются из файла, при выходе – сохраняются в файл. Путь к файлу задаётся через аргумент командной строки.
+- Обработка ошибок ввода пользователя (неверный формат даты, нечисловое значение суммы), обработка ошибок открытия/записи файла.
 
-## Dependencies
 
-- C++17 Compiler (or newer)
-- CMake (3.14 or newer)
+## Требования
+
+- Компилятор C++17 (или новее)
+- CMake (3.14 или новее)
 - Git
 
-## Building and Running
+## Сборка и запуск
 
-### 1. Clone the repository
+### 1. Клонирование репозитория
 
 ```bash
-git clone <your-repository-url>
+git clone <repository-url>
 cd personal-finance-manager
+```
+
+### 2. Сборка проекта
+
+```bash
+cmake -B build
+cmake --build build
+```
+
+### 3. Запуск приложения
+
+```bash
+./build/src/finance_app data.csv
+```
