@@ -4,18 +4,14 @@ project(PersonalFinanceManager CXX)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# --- Include necessary modules ---
 include(FetchContent)
 include(CTest)
 
-# --- Project Options ---
 option(GENERATE_DOCS "Generate Doxygen documentation" OFF)
 
-# --- Add subdirectories for source and tests ---
 add_subdirectory(src)
 add_subdirectory(tests)
 
-# --- Doxygen Documentation Generation ---
 if(GENERATE_DOCS)
     find_package(Doxygen)
     if(DOXYGEN_FOUND)
