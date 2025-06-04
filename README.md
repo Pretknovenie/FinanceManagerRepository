@@ -40,5 +40,18 @@ cmake --build build
 ### 3. Запуск приложения
 
 ```bash
-./build/src/finance_app data.csv
+build\src\finance_app.exe data.csv
+```
+
+### 4. Генерация документации
+
+```bash
+cmake -B build -DGENERATE_DOCS=ON
+cmake --build build --target doc
+```
+
+### 5. Запуск тестов
+```bash
+cd build
+ctest --verbose
 ```
