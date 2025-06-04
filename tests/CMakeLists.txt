@@ -1,4 +1,3 @@
-# --- Doctest Configuration ---
 FetchContent_Declare(
     doctest
     GIT_REPOSITORY https://github.com/doctest/doctest.git
@@ -6,7 +5,6 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(doctest)
 
-# --- Test Executable ---
 add_executable(run_tests TestFinanceManager.cpp)
 
 target_include_directories(run_tests PRIVATE
@@ -16,5 +14,4 @@ target_include_directories(run_tests PRIVATE
 
 target_link_libraries(run_tests PRIVATE doctest finance_lib)
 
-# --- CTest Integration ---
 add_test(NAME FinanceManagerTests COMMAND run_tests)
