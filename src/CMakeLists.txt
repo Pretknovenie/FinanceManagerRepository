@@ -7,7 +7,6 @@ add_executable(finance_app
 
 target_include_directories(finance_app PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 
-# Library for linking with tests
 add_library(finance_lib STATIC
     Date.cpp
     Transaction.cpp
