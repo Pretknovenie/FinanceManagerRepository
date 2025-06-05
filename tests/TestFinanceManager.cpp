@@ -77,7 +77,7 @@ TEST_CASE("FinanceManager Core Functionality") {
         CHECK(edited_trans->amount == -20.0);
         CHECK(edited_trans->date.day == 28);
         CHECK(edited_trans->description == "Metro");
-        // Отрицательный случай: редактировать несуществующее
+        // Отрицательный случай: несуществующйи ID
         CHECK(manager.editTransaction(999, Date(), 0, "", "") == false);
     }
     
@@ -85,7 +85,7 @@ TEST_CASE("FinanceManager Core Functionality") {
         const auto* found = manager.findTransactionById(2);
         REQUIRE(found != nullptr);
         CHECK(found->category == "Salary");
-        // Отрицательный случай: найти несуществующее
+        // Отрицательный случай: несуществующий ID
         const auto* not_found = manager.findTransactionById(999);
         CHECK(not_found == nullptr);
     }
