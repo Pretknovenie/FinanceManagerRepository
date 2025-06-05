@@ -2,7 +2,6 @@
 #include <iostream>
 #include <limits>
 #include <map>
-#include <numeric>
 
 // --- Вспомогательные функции ---
 void printTransaction(const Transaction& trans) {
